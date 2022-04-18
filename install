@@ -1,0 +1,59 @@
+#!/usr/bin/env sh
+
+clear
+printf '\n \nClonando repositorios mxhectorvega...\n'
+sleep 1
+
+git clone https://github.com/mxhectorvega/suckless
+#git clone https://github.com/mxhectorvega/tipografias
+#git clone https://github.com/mxhectorvega/temas
+
+clear
+printf '\n \nMoviendo y creando directorios...\n'
+sleep 1
+
+cp -rf "$HOME"/suckless/ "$HOME"/.config/
+#mkdir -p "$HOME"/.local/share/fonts/
+#cp -rf "$HOME"/tipografias/* "$HOME"/.local/share/fonts/
+#cp -rf "$HOME"/temas/.{icons,themes}/ "$HOME"
+#rm -rf "$HOME"/{suckless,tipografias,temas}/
+
+clear
+printf '\n \nCompilando codigo fuete Suckless...\n'
+sleep 1
+
+cd "$HOME"/.config/suckless/dwm
+sudo make install
+cd ../st
+sudo make install
+cd ../slstatus
+sudo make install
+cd ../dmenu
+sudo make install
+cd $HOME
+
+clear
+printf '\n \nCreando entrada para Display Manager...\n'
+sleep 1
+
+sudo mkdir /usr/share/xsessions
+sudo tee /usr/share/xsessions/dwm.desktop <<EOF
+[Desktop Entry]
+Encoding=UTF-8
+Name=Dwm
+Comment=Dynamic window manager
+Exec=dwm
+Icon=dwm
+Type=XSession
+EOF
+
+clear
+printf '\n \nCreando .xprofile (cosas que incian con DWM)...\n'
+sleep 1
+
+sudo mkdir /usr/share/xsessions
+sudo tee $HOME/.xprofile <<EOF
+nm-applet --indicator &
+nitrogen --restore &
+slstatus &
+EOF
