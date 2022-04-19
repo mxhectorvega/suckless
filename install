@@ -63,6 +63,7 @@ clear
 sudo tee $HOME/.xprofile <<EOF
 nm-applet --indicator &
 nitrogen --restore &
+picom &
 slstatus &
 EOF
 
