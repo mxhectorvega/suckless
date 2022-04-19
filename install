@@ -4,7 +4,7 @@ clear
 printf '\n \nInstalando paquetes necesarios para la config...\n'
 sleep 1
 clear
-sudo pacman -S git make gcc --noconfirm
+sudo pacman -S git make gcc picom nitrogen --noconfirm
 
 
 clear
