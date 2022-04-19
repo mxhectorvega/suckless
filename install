@@ -4,7 +4,7 @@ clear
 printf '\n \nInstalando paquetes necesarios para la config...\n'
 sleep 1
 clear
-sudo pacman -S git make gcc picom nitrogen --noconfirm
+sudo pacman -S git make gcc picom nitrogen neofetch network-manager-applet --noconfirm
 
 
 clear
@@ -12,17 +12,17 @@ printf '\n \nClonando repositorios mxhectorvega...\n'
 sleep 1
 clear
 git clone https://github.com/mxhectorvega/suckless "$HOME"/.config/suckless/
-#git clone https://github.com/mxhectorvega/tipografias
+git clone https://github.com/mxhectorvega/tipografias
 #git clone https://github.com/mxhectorvega/temas
 
 clear
 printf '\n \nMoviendo y creando directorios...\n'
 sleep 1
 clear
-#mkdir -p "$HOME"/.local/share/fonts/
-#cp -rf "$HOME"/tipografias/* "$HOME"/.local/share/fonts/
+mkdir -p "$HOME"/.local/share/fonts/
+cp -rf "$HOME"/tipografias/* "$HOME"/.local/share/fonts/
 #cp -rf "$HOME"/temas/.{icons,themes}/ "$HOME"
-#rm -rf "$HOME"/{suckless,tipografias,temas}/
+rm -rf "$HOME"/{suckless,tipografias,temas}/
 
 clear
 printf '\n \nCompilando codigo fuete Suckless...\n'
@@ -60,14 +60,15 @@ sleep 1
 clear
 sudo mkdir /usr/share/xsessions
 clear
-sudo tee $HOME/.xprofile <<EOF
+sudo tee $HOME/.xinitrc <<EOF
 nm-applet --indicator &
 nitrogen --restore &
 picom &
 slstatus &
+exec dwm
 EOF
 
-sudo chmod 777 $HOME/.xprofile
+sudo chmod 777 $HOME/.xinitrc
 
 clear
 printf '\n \n \n \n \n \n \n                                    Configuraciones aplicadas \n \n \n \n \n \n \n \n \n \n'
