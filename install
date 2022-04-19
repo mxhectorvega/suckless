@@ -1,6 +1,13 @@
 #!/bin/bash
 
 clear
+printf '\n \nInstalando paquetes necesarios para la config...\n'
+sleep 1
+clear
+sudo pacman -S git make gcc --noconfirm
+
+
+clear
 printf '\n \nClonando repositorios mxhectorvega...\n'
 sleep 1
 clear
@@ -58,6 +65,8 @@ nm-applet --indicator &
 nitrogen --restore &
 slstatus &
 EOF
+
+sudo chmod 777 $HOME/.xprofile
 
 clear
 printf '\n \n \n \n \n \n \n                                    Configuraciones aplicadas \n \n \n \n \n \n \n \n \n \n'
