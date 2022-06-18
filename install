@@ -1,4 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# Titulo: Instalación del gestor de ventanas DWM by Suckless
+# Autor: Hector Iván Vega Zamudio
+# Correo: mxhectorvega@gmail.com
+# Link: https://github.com/mxhectorvega
+# Versión:v1.0
+# Fecha de actualización 18/06/2022
+# Nota: El sistema de preferencia tuvo que haber sido instalado con la herramienta archinstall del liveUSB,
+# Seleccionando el perfil Xorg con todos los controladores de código abierto.
+
 
 clear
 printf '\n \nInstalando paquetes necesarios para la config...\n'
@@ -69,6 +79,19 @@ exec dwm
 EOF
 
 sudo chmod 777 $HOME/.xinitrc
+
+## Instalando repositorio Chaotic para no depender de YAY o PARU.
+sleep 1
+printf '\n \nInstalando repositorio Chaotic para no depender de YAY o PARU'
+clear
+sudo pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key FBA220DFC880C036
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
+sudo tee -a /etc/pacman.conf <<EOF
+[chaotic-aur]
+Include = /etc/pacman.d/chaotic-mirrorlist
+EOF
+sudo pacman -Sy --noconfirm
 
 clear
 printf '\n \n \n \n \n \n \n                                    Configuraciones aplicadas \n \n \n \n \n \n \n \n \n \n'
