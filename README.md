@@ -1,6 +1,6 @@
 # Suckless suite
 
-Dwm es un Gestor de Ventanas escritor en "C" super ligero, aqui agrego sus demas utilidades: ST (terminal ligera), Slstatus (statusbar) y Dmenu (menu simple).
+Dwm es un Gestor de Ventanas escritor en "C" super ligero, aqui agrego sus demas utilidades: ST (terminal ligera), Slstatus (statusbar) y Dmenu (menu simple) y un gestor de ventanas sin statusbar para a los que les gusta aun mas "clean".
 
 Puede clonar el repositorio manualmente compilando en cada directorio con ```make ; sudo make install``` o ejecutar un script automatizado de instalacion que hara todo por usted 
 
